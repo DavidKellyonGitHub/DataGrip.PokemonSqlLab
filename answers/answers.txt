@@ -1,0 +1,10 @@
+PART 2
+=======
+SELECT * FROM TYPES;
+SELECT * FROM pokemons WHERE id = 45;
+SELECT COUNT (DISTINCT id) FROM pokemons;
+SELECT COUNT (DISTINCT secondary_type) FROM pokemons;
+
+PART 3
+=======
+

@@ -3,7 +3,7 @@ PART 2
 SELECT * FROM TYPES;
 SELECT * FROM pokemons WHERE id = 45;
 SELECT COUNT (DISTINCT id) FROM pokemons;
-SELECT COUNT (DISTINCT secondary_type) FROM pokemons;
+SELECT COUNT (DISTINCT secondary_type) FROM pokemons WHERE secondary_type IS NOT NULL;
 
 PART 3
 =======
@@ -13,4 +13,8 @@ SELECT pokemons.name FROM pokemons JOIN pokemon_trainer ON pokemon_trainer.pokem
 SELECT COUNT(pokemons.name) FROM pokemons JOIN types ON pokemons.secondary_type = types.id WHERE types.name = 'Poison';
 SELECT types.name, COUNT(pokemons.name) FROM pokemons JOIN  types ON types.id = pokemons.primary_type GROUP BY types.name ORDER BY COUNT(DISTINCT pokemons.id);
 SELECT trainers.trainername, COUNT(DISTINCT pokemon_trainer.pokemon_id) FROM pokemon_trainer JOIN trainers ON trainers.trainerid = pokemon_trainer.trainerid WHERE pokemon_trainer.pokelevel = 100 GROUP BY trainers.trainername;
+SELECT COUNT(*) AS one_trainer FROM (SELECT COUNT(pokemon_trainer.pokemon_id) FROM pokemon_trainer GROUP BY pokemon_id HAVING COUNT(*) = 1) subquery;
+
+PART 4
+======
 
